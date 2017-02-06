@@ -3,6 +3,7 @@ import React, {
   PropTypes
 } from 'react'
 import ReactNative, {
+  Dimensions,
   Platform,
   ScrollView,
   View,
@@ -10,7 +11,6 @@ import ReactNative, {
 } from 'react-native'
 
 import Circles from './Circles'
-import FixedSizeView from './FixedSizeView'
 import reducer from './reducer'
 
 import { createStore } from 'redux'
@@ -61,7 +61,7 @@ export default class SwipeALot extends Component {
         this.swiper.setPage(page)
       }
       else {
-        const { width } = this.store.getState()
+        const { width } = Dimensions.get('window')
         this.swiper.scrollTo({
           x: page * width
         })
@@ -134,6 +134,7 @@ export default class SwipeALot extends Component {
         }}>
         {(() => {
           if (Platform.OS === 'ios') {
+            const { width, height } = Dimensions.get('window')
             return (
               <ScrollView
                 ref={(c) => this.swiper = c}
@@ -144,21 +145,12 @@ export default class SwipeALot extends Component {
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
                 onMomentumScrollEnd={(e) => {
-                  const { width } = this.store.getState()
                   const page = e.nativeEvent.contentOffset.x / width
                   this.swipeToPage(page)
                 }}
-                onLayout={(event) => {
-                  const {x, y, width, height} = event.nativeEvent.layout
-                  this.store.dispatch({
-                    type: 'SET_DIMS',
-                    width,
-                    height
-                  })
-                }}
                 automaticallyAdjustContentInsets={false}>
                 {React.Children.map(this.props.children, (c, i) => {
-                  return <FixedSizeView store={this.store} key={`view${i}`}>{c}</FixedSizeView>
+                  return <View style={{width, height}} key={`view${i}`}>{c}</View>
                 })}
               </ScrollView>
             )

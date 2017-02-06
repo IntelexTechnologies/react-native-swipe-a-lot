@@ -8,10 +8,6 @@ const reducer = (state = {}, action) => {
     case 'SET_ACTIVE_PAGE':
       newState.page = action.page
       break
-    case 'SET_DIMS':
-      newState.width = action.width
-      newState.height = action.height
-      break
   }
 
   return newState

@@ -19,18 +19,3 @@ test('set active page', () => {
     })
   ).toEqual(stateAfter)
 })
-
-test('set view dims', () => {
-  const stateBefore = {}
-  const stateAfter = { width: 200, height: 300 }
-
-  deepFreeze(stateBefore)
-
-  expect(
-    reducer(stateBefore, {
-      type: 'SET_DIMS',
-      width: 200,
-      height: 300
-    })
-  ).toEqual(stateAfter)
-})
