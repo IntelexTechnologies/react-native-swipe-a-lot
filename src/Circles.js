@@ -32,6 +32,7 @@ class Circles extends Component {
       circleWrapperStyle: PropTypes.object,
       circleDefaultStyle: PropTypes.object,
       circleActiveStyle: PropTypes.object,
+      circleProps: PropTypes.object,
       children: PropTypes.any
     }
   }
@@ -60,7 +61,7 @@ class Circles extends Component {
               })
             }}>
               <View>
-                <View
+                <View {...this.props.circleProps}
                 style={[styles.circleDefault,
                   this.props.circleDefaultStyle,
                   i === selectedPage && styles.circleActive,

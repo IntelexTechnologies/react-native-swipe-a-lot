@@ -119,6 +119,7 @@ export default class SwipeALot extends Component {
       circleWrapperStyle: PropTypes.object,
       circleDefaultStyle: PropTypes.object,
       circleActiveStyle: PropTypes.object,
+      circleProps: PropTypes.object,
       children: PropTypes.any,
       emitter: PropTypes.object,
       autoplay: PropTypes.object,
@@ -176,7 +177,8 @@ export default class SwipeALot extends Component {
         <Circles store={this.store} emitter={this.emitter}
           circleWrapperStyle={this.props.circleWrapperStyle}
           circleDefaultStyle={this.props.circleDefaultStyle}
-          circleActiveStyle={this.props.circleActiveStyle}>
+          circleActiveStyle={this.props.circleActiveStyle}
+          circleProps={this.props.circleProps}>
           {this.props.children}
         </Circles>
       </View>
