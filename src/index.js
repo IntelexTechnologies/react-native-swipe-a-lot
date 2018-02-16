@@ -1,6 +1,5 @@
 import React, {
-  Component,
-  PropTypes
+  Component
 } from 'react'
 import ReactNative, {
   Dimensions,
@@ -9,6 +8,8 @@ import ReactNative, {
   View,
   ViewPagerAndroid
 } from 'react-native'
+
+import PropTypes from 'prop-types'
 
 import Circles from './Circles'
 import reducer from './reducer'
